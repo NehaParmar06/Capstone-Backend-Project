@@ -1,7 +1,7 @@
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\AddressControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\OrderControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\CustomerControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\ItemControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\CategoryControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\PaymentControllerTest.java
-E:\IntelliJ\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller\RestaurantControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CustomerControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/ItemControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/CategoryControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/RestaurantControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/PaymentControllerTest.java
+/Users/divesh.gandhi/upgrad/capstone-project/Capstone-Backend-Project/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/OrderControllerTest.java
