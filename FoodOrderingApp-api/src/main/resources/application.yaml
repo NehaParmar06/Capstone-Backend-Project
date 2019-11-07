@@ -11,8 +11,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/restaurantdb
-    username: divesh.gandhi
-    password:
+    username: postgres
+    password: Ironman1*
 
   jpa:
     properties:
