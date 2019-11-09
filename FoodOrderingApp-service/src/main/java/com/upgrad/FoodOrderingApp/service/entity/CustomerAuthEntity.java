@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "CUSTOMER_AUTH", schema = "public")
@@ -41,14 +42,14 @@ public class CustomerAuthEntity implements Serializable {
     private String accessToken;
 
     @Column(name = "LOGIN_AT")
-    private Timestamp login_at;
+    private ZonedDateTime login_at;
 
     @Column(name = "LOGOUT_AT")
-    private Timestamp logout_at;
+    private ZonedDateTime logout_at;
 
 
     @Column(name = "EXPIRES_AT")
-    private Timestamp expires_at;
+    private ZonedDateTime expires_at;
 
     public long getId() {
             return id;
@@ -78,27 +79,27 @@ public class CustomerAuthEntity implements Serializable {
         this.accessToken = accessToken;
     }
 
-    public Timestamp getLogin_at() {
+    public ZonedDateTime getLogin_at() {
         return login_at;
     }
 
-    public void setLogin_at(Timestamp login_at) {
+    public void setLogin_at(ZonedDateTime login_at) {
         this.login_at = login_at;
     }
 
-    public Timestamp getLogout_at() {
+    public ZonedDateTime getLogout_at() {
         return logout_at;
     }
 
-    public void setLogout_at(Timestamp logout_at) {
+    public void setLogout_at(ZonedDateTime logout_at) {
         this.logout_at = logout_at;
     }
 
-    public Timestamp getExpires_at() {
+    public ZonedDateTime getExpires_at() {
         return expires_at;
     }
 
-    public void setExpires_at(Timestamp expires_at) {
+    public void setExpires_at(ZonedDateTime expires_at) {
         this.expires_at = expires_at;
     }
 
