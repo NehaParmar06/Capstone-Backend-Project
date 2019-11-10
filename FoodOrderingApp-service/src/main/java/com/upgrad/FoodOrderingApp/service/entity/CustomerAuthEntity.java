@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,11 +33,6 @@ public class CustomerAuthEntity implements Serializable {
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "CUSTOMER_ID")
-    @NotNull
-    @Size(max = 50)
-    private int cust_id;
-
     @Column(name = "ACCESS_TOKEN")
     @NotNull
     @Size(max = 500)
@@ -47,9 +44,13 @@ public class CustomerAuthEntity implements Serializable {
     @Column(name = "LOGOUT_AT")
     private ZonedDateTime logout_at;
 
-
     @Column(name = "EXPIRES_AT")
     private ZonedDateTime expires_at;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private CustomerEntity customer;
 
     public long getId() {
             return id;
@@ -67,8 +68,12 @@ public class CustomerAuthEntity implements Serializable {
             this.uuid = uuid;
         }
 
-    public void setCustId(int cust_id) {
-        this.cust_id = cust_id;
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
     }
 
     public String getAccessToken() {

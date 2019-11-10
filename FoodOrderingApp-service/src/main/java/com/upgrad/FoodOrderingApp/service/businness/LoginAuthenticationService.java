@@ -35,7 +35,7 @@ public class LoginAuthenticationService {
         if (encryptedPassword.equals(customerEntity.getPassword())) {
             JwtTokenProvider jwtTokenProvider = new JwtTokenProvider(encryptedPassword);
             CustomerAuthEntity customerAuthTokenEntity = new CustomerAuthEntity();
-            //customerAuthTokenEntity.setCustId();
+
             customerAuthTokenEntity.setUuid(customerEntity.getUuid());
             final ZonedDateTime now = ZonedDateTime.now();
 
@@ -52,7 +52,7 @@ public class LoginAuthenticationService {
             customerDao.updateCustomer(customerEntity);
             return customerAuthTokenEntity;
         } else {
-            throw new AuthenticationFailedException("ATH-002", "Password failed");
+            throw new AuthenticationFailedException("ATH-002", "Invalid Credentials");
         }
     }
 }

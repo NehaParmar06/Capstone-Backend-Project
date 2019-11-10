@@ -46,9 +46,21 @@ public class AddressEntity implements Serializable {
     @Size(max = 30)
     private String pincode;
 
-    @Column(name = "STATE_ID")
-    @NotNull
-    private int state_id;
+//    @Column(name = "STATE_ID")
+//    @NotNull
+//    private int state_id;
+
+    public StateEntity getStateEntity() {
+        return stateEntity;
+    }
+
+    public void setStateEntity(StateEntity stateEntity) {
+        this.stateEntity = stateEntity;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "STATE_ID")
+    private StateEntity stateEntity;
 
     @Column(name = "ACTIVE")
     @NotNull
@@ -102,13 +114,13 @@ public class AddressEntity implements Serializable {
         this.pincode = pincode;
     }
 
-    public int getState_id() {
-        return state_id;
-    }
-
-    public void setState_id(int state_id) {
-        this.state_id = state_id;
-    }
+//    public int getState_id() {
+//        return state_id;
+//    }
+//
+//    public void setState_id(int state_id) {
+//        this.state_id = state_id;
+//    }
 
     public int getActive() {
         return active;
