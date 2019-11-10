@@ -1,14 +1,13 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
-import com.upgrad.FoodOrderingApp.api.model.SaveAddressRequest;
-import com.upgrad.FoodOrderingApp.api.model.SaveAddressResponse;
-import com.upgrad.FoodOrderingApp.api.model.StatesList;
-import com.upgrad.FoodOrderingApp.api.model.StatesListResponse;
+import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.StateService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
+import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,6 +57,28 @@ public class AddressController {
 
     }
 
+    //toDO
+    @RequestMapping(method = RequestMethod.GET, path = "/address/customer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<AddressListResponse>> getAllSavedAddress(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
+        List<AddressEntity> addressEntities = addressService.getAllSavedAddress(authorization);
+        List<AddressListResponse> addressListResponseList = new ArrayList<AddressListResponse>();
+        for (int i = 0; i < addressEntities.size(); i++) {
+            AddressEntity addressEntity = addressEntities.get(i);
+            //addressListResponseList.add(new AddressListResponse().addresses(addressEntity.getUuid()).id(addressEntity.getUuid()));
+        }
+        return new ResponseEntity<List<AddressListResponse>>(addressListResponseList, HttpStatus.OK);
+    }
+
+    //toDo
+ //   @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+ //   public ResponseEntity<DeleteAddressResponse> deleteSavedAddress(@RequestHeader("authorization") final String authorization, @PathVariable("address_id") final String address_id) throws AuthorizationFailedException, AddressNotFoundException {
+//        AddressEntity addressEntity = addressService.deleteSavedAddress(authorization, address_id);
+//        final DeleteAddressResponse deleteAddressResponse = new DeleteAddressResponse().id(addressEntity.getUuid()).status("ADDRESS DELETED SUCCESSFULLY");
+//        return new ResponseEntity<DeleteAddressResponse>(deleteAddressResponse, HttpStatus.OK);
+//    }
+
+
+    //toDo
     @RequestMapping(method = RequestMethod.GET, path = "/states", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<StatesListResponse>> getAllQuestions() {
         List<StateEntity> stateEntities = stateService.getAllStates();
