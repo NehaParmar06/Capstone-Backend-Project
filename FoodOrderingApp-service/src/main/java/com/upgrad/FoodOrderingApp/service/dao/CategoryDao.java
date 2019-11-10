@@ -84,4 +84,18 @@ public class CategoryDao {
             return null;
         }
     }
+
+    //Function Accepts a Category UUId and returns back the object found
+    public Category getCategoryByUUId(String uuid) throws CategoryNotFoundException {
+        try {
+            // Get Id from UUID
+            Category category = entityManager.createNamedQuery("UUIDCaseInsensitive", Category.class).setParameter("uuid", uuid).getSingleResult();
+            if (null == category) {
+                throw new CategoryNotFoundException("CNF-002", "No category by this id");
+            }
+            return category;
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }

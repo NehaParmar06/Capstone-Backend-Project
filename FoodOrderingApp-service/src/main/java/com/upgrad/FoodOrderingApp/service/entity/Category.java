@@ -9,14 +9,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "category", schema = "public")
 @NamedQueries({
         @NamedQuery(name = "getCategoryName", query = "select c from Category c where c.id =:id order by c.category_name"),
         @NamedQuery(name = "getCategoryByUUId", query = "select c from Category c where c.uuid =:uuid order by c.category_name"),
+        @NamedQuery(name = "UUIDCaseInsensitive", query = "select c from Category c where lower(c.uuid) like lower(concat('%', :uuid,'%'))"),
 })
 public class Category implements Serializable {
     @Id
