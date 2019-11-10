@@ -1,21 +1,22 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 
-import com.upgrad.FoodOrderingApp.api.model.LoginResponse;
+import com.upgrad.FoodOrderingApp.api.model.*;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.businness.LoginAuthenticationService;
+import com.upgrad.FoodOrderingApp.service.businness.LogoutService;
 import com.upgrad.FoodOrderingApp.service.businness.SignupBusinessService;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
+import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
+import com.upgrad.FoodOrderingApp.service.exception.UpdateCustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.upgrad.FoodOrderingApp.api.model.SignupCustomerResponse;
-import com.upgrad.FoodOrderingApp.api.model.SignupCustomerRequest;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -29,6 +30,12 @@ public class CustomerController {
 
     @Autowired
     private LoginAuthenticationService loginAuthenticationService;
+
+    @Autowired
+    private LogoutService logoutService;
+
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping(method = RequestMethod.POST, path = "/customer/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupCustomerResponse> customerSignup(final SignupCustomerRequest signupCustomerRequest) throws SignUpRestrictedException {
@@ -69,5 +76,33 @@ public class CustomerController {
             return null;
         }
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/user/signout",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<LogoutResponse> logout(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
+        CustomerAuthEntity customerAuthToken = logoutService.logout(authorization);
+        CustomerEntity customer = customerAuthToken.getCustomer();
+
+        LogoutResponse logoutResponse = new LogoutResponse().id(customer.getUuid()).message("LOGGED OUT SUCCESSFULLY");
+        return new ResponseEntity<LogoutResponse>(logoutResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/customer", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<UpdateCustomerResponse> updateCustomer(@RequestHeader("authorization") final String authorization, final UpdateCustomerRequest updateCustomerRequest) throws AuthorizationFailedException, UpdateCustomerException {
+        String firstName = updateCustomerRequest.getFirstName();
+        String lastName = updateCustomerRequest.getLastName();
+        CustomerEntity customerEntity = customerService.updateCustomerDetails(authorization, firstName, lastName);
+        final UpdateCustomerResponse updateCustomerResponse = new UpdateCustomerResponse().id(customerEntity.getUuid()).status("CUSTOMER DETAILS UPDATED SUCCESSFULLY");
+        return new ResponseEntity<UpdateCustomerResponse>(updateCustomerResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/customer/password", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<UpdatePasswordResponse> changePassword(@RequestHeader("authorization") final String authorization, final UpdatePasswordRequest updatePasswordRequest) throws AuthorizationFailedException, UpdateCustomerException {
+        String oldPassword = updatePasswordRequest.getOldPassword();
+        String newPassword = updatePasswordRequest.getNewPassword();
+        CustomerEntity customerEntity = customerService.updatePassword(authorization, oldPassword, newPassword);
+        final UpdatePasswordResponse updatePasswordResponse = new UpdatePasswordResponse().id(customerEntity.getUuid()).status("CUSTOMER PASSWORD UPDATED SUCCESSFULLY");
+        return new ResponseEntity<UpdatePasswordResponse>(updatePasswordResponse, HttpStatus.OK);
+    }
+
 
 }
