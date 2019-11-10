@@ -18,6 +18,7 @@ import java.util.UUID;
 @Table(name = "restaurant", schema = "public")
 @NamedQueries({
         @NamedQuery(name = "restaurantByName", query = "select u from Restaurant u where lower(u.restaurant_name) like lower(concat('%', :restaurant_name,'%'))"),
+        @NamedQuery(name = "restaurantById", query = "select u from Restaurant u where u.uuid = :uuid"),
 })
 public class Restaurant implements Serializable {
 

@@ -22,12 +22,23 @@ public class RestaurantBusinessService {
         return restaurantDao.getAllRestaurants();
     }
 
-
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Restaurant> getRestaurantsByName(String restaurant_name) throws RestaurantNotFoundException {
         if ( null == restaurant_name){
             throw new RestaurantNotFoundException("RNF-003", "Restaurant name field should not be empty");
         }
         return restaurantDao.getRestaurantsByName(restaurant_name);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Restaurant getRestaurantById(String restaurant_id) throws RestaurantNotFoundException {
+        if ( null == restaurant_id){
+            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+        }
+        Restaurant restaurant = restaurantDao.getRestaurantById(restaurant_id);
+        if ( restaurant == null){
+            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+        }
+        return restaurant;
     }
 }

@@ -30,4 +30,12 @@ public class RestaurantDao {
             return null;
         }
     }
+
+    public Restaurant getRestaurantById(String restaurant_id) {
+        try {
+            return entityManager.createNamedQuery("restaurantById", Restaurant.class).setParameter("uuid", restaurant_id).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }
