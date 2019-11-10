@@ -202,9 +202,8 @@ public class RestaurantController {
 
         List<Category> categories = categoryService.getAllCategoryObject(restaurant.getId());
 
-        //CategoryDetailsResponse categoryDetailsResponse = new CategoryDetailsResponse();
         List<CategoryList> categoryList = new ArrayList<>();
-        for (Category category : categories){
+        for (Category category : categories) {
             // Iterate over each category and get the item id from category item
             CategoryList list = new CategoryList();
             list.setId(UUID.fromString(category.getUuid()));
@@ -212,22 +211,25 @@ public class RestaurantController {
 
             List<CategoryItem> categoryItems = itemService.getItemsbyCategoryId(category.getId());
             List<ItemList> itemLists = new ArrayList<>();
-            for(CategoryItem categoryItem: categoryItems){
+            for (CategoryItem categoryItem : categoryItems) {
                 Item item = itemService.getItemsbyItemsId(categoryItem.getItem_id());
                 ItemList itemList = new ItemList();
                 itemList.setId(UUID.fromString(item.getUuid()));
                 itemList.setItemName(item.getItem_name());
                 itemList.setPrice(item.getPrice());
-                //TODO : Add Veg for 0 and 1 for Non Veg for ItemTyep
-                //itemList.setItemType(ItemList.ItemTypeEnum.valueOf(item.getType()));
+                if (Integer.parseInt(item.getType()) == 0) {
+                    itemList.setItemType(ItemList.ItemTypeEnum.VEG);
+                }
+                if (Integer.parseInt(item.getType()) == 1) {
+                    itemList.setItemType(ItemList.ItemTypeEnum.NON_VEG);
+                }
+
                 itemLists.add(itemList);
             }
             list.setItemList(itemLists);
             categoryList.add(list);
         }
         restaurantDetailsResponse.setCategories(categoryList);
-        //List<Category> categories = restaurant.getCategory();
-        //restaurantList.setCategories(categories.toString());
         return new ResponseEntity<>(restaurantDetailsResponse, HttpStatus.OK);
     }
 }
