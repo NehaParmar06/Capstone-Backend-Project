@@ -1,6 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
 import com.upgrad.FoodOrderingApp.service.entity.Category;
+import com.upgrad.FoodOrderingApp.service.entity.Restaurant;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import org.springframework.stereotype.Repository;
@@ -54,6 +55,15 @@ public class CategoryDao {
 
             return categoryList;
 
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    // Function returns all the objects in the category table
+    public List<Category> getAllCategoryObjectWithoutFilter() {
+        try {
+            return entityManager.createQuery("SELECT p from Category p order by p.category_name", Category.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }

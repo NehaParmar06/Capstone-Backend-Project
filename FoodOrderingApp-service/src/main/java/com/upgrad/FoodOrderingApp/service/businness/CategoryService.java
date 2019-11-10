@@ -28,6 +28,11 @@ public class CategoryService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
+    public List<Category> getAllCategoryObjectNoFilter() {
+        return categoryDao.getAllCategoryObjectWithoutFilter();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     public List<RestaurantCategory> getRestaurantByCategoryId(String category_uuid) throws CategoryNotFoundException {
         return categoryDao.getCategoryById(category_uuid);
     }
