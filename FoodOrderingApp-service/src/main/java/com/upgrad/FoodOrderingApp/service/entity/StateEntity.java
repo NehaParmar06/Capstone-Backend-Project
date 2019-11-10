@@ -6,7 +6,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -15,7 +14,7 @@ import javax.persistence.Entity;
 @Entity
 @Table(name = "STATE", schema = "public")
 @NamedQueries({
-        //@NamedQuery(name = "customerAuthTokenByAccessToken", query = "select ct from CustomerAuthEntity ct where ct.accessToken =:accessToken")
+        @NamedQuery(name = "allStates", query = "select s from StateEntity s")
 })
 
 public class StateEntity implements Serializable {
@@ -27,7 +26,6 @@ public class StateEntity implements Serializable {
 
     @Column(name = "UUID")
     @Size(max = 200)
-    @NotNull
     private String uuid;
 
     @Column(name = "STATE_NAME")
