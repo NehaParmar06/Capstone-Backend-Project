@@ -2,7 +2,6 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.RestaurantDao;
 import com.upgrad.FoodOrderingApp.service.entity.Restaurant;
-import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.RestaurantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,18 +31,15 @@ public class RestaurantBusinessService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public Restaurant getRestaurantById(String restaurant_id) throws RestaurantNotFoundException {
-        if (null == restaurant_id) {
-            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
-        }
         Restaurant restaurant = restaurantDao.getRestaurantById(restaurant_id);
         if (null == restaurant) {
-            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+            throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
         }
         return restaurant;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Restaurant getRestaurantUUIDById(int restaurant_id) throws CategoryNotFoundException {
+    public Restaurant getRestaurantUUIDById(int restaurant_id) {
         return restaurantDao.getRestaurantUUIDById(restaurant_id);
     }
 }

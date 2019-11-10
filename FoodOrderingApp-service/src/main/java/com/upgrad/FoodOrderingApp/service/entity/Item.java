@@ -7,28 +7,35 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "restaurant_category", schema = "public")
+@Table(name = "item", schema = "public")
 @NamedQueries({
-        @NamedQuery(name = "getByRestaurantId", query = "select ct from RestaurantCategory ct where ct.restaurant_id =:restaurant_id"),
-        @NamedQuery(name = "getByCategoryId", query = "select rc from RestaurantCategory rc where rc.category_id =:category_id"),
+        @NamedQuery(name = "getItemsByItemId", query = "select i from Item i where i.id =:id"),
+        @NamedQuery(name = "getByUUId", query = "select c from Item c where c.uuid =:uuid"),
 })
-public class RestaurantCategory implements Serializable {
+public class Item implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "restaurant_id")
+    @Column(name = "uuid")
     @NotNull
-    private int restaurant_id;
+    private String uuid;
 
-    @Column(name = "category_id")
+    @Column(name = "item_name")
     @NotNull
-    private int category_id;
+    private String item_name;
+
+    @Column(name = "price")
+    @NotNull
+    private int price;
+
+    @Column(name = "type")
+    @NotNull
+    private String type;
 
     public int getId() {
         return id;
@@ -38,20 +45,36 @@ public class RestaurantCategory implements Serializable {
         this.id = id;
     }
 
-    public int getRestaurant_id() {
-        return restaurant_id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setRestaurant_id(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public String getItem_name() {
+        return item_name;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

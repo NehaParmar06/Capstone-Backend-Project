@@ -41,6 +41,24 @@ public class CategoryDao {
         }
     }
 
+    // Function accepts the restaurant id and gets the category objects
+    public List<Category> getAllCategoryObject(int id) {
+        try {
+            List<RestaurantCategory> restaurantCategories = entityManager.createNamedQuery("getByRestaurantId", RestaurantCategory.class).setParameter("restaurant_id", id).getResultList();
+            List<Category> categoryList = new ArrayList<>();
+            for (RestaurantCategory restaurantCategory : restaurantCategories) {
+                // get category names from the id's fetched
+                Category category = entityManager.createNamedQuery("getCategoryName", Category.class).setParameter("id", restaurantCategory.getCategory_id()).getSingleResult();
+                categoryList.add(category);
+            }
+
+            return categoryList;
+
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
     // Function accepts the category uuid and gets the category id's
     public List<RestaurantCategory> getCategoryById(String uuid) throws CategoryNotFoundException {
         try {

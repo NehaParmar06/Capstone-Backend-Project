@@ -1,6 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.CategoryDao;
+import com.upgrad.FoodOrderingApp.service.entity.Category;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
 import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class CategoryService {
     @Transactional(propagation = Propagation.REQUIRED)
     public String getCategory(int restaurant_id) {
         return categoryDao.getCategory(restaurant_id);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<Category> getAllCategoryObject(int restaurant_id) {
+        return categoryDao.getAllCategoryObject(restaurant_id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

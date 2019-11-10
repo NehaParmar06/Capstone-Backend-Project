@@ -3,6 +3,7 @@ package com.upgrad.FoodOrderingApp.api.controller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.CategoryService;
+import com.upgrad.FoodOrderingApp.service.businness.ItemService;
 import com.upgrad.FoodOrderingApp.service.businness.RestaurantBusinessService;
 import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
@@ -30,6 +31,9 @@ public class RestaurantController {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    ItemService itemService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantListResponse> getAllRestaurants() {
@@ -73,6 +77,9 @@ public class RestaurantController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/restaurant/name/{restaurant_name}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantListResponse> getRestaurantsByName(@PathVariable("restaurant_name") String restaurant_name) throws RestaurantNotFoundException {
+        if (null == restaurant_name) {
+            throw new RestaurantNotFoundException("RNF-003", "Restaurant name field should not be empty");
+        }
         RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
         List<Restaurant> restaurants = restaurantBusinessService.getRestaurantsByName(restaurant_name);
         for (Restaurant restaurant : restaurants) {
@@ -104,8 +111,6 @@ public class RestaurantController {
 
             String category_names = categoryService.getCategory(restaurant.getId());
             restaurantList.setCategories(category_names);
-            //List<Category> categories = restaurant.getCategory();
-            //restaurantList.setCategories(categories.toString());
             restaurantListResponse.addRestaurantsItem(restaurantList);
         }
         return new ResponseEntity<>(restaurantListResponse, HttpStatus.OK);
@@ -119,14 +124,13 @@ public class RestaurantController {
         }
 
         List<RestaurantCategory> restaurantCategoryList = categoryService.getRestaurantByCategoryId(category_id);
-        if ( null == restaurantCategoryList || restaurantCategoryList.size() == 0 ){
+        if (null == restaurantCategoryList || restaurantCategoryList.size() == 0) {
             return null;
         }
         List<Restaurant> restaurants = new ArrayList<>();
-        for(RestaurantCategory restaurantCategory: restaurantCategoryList){
+        for (RestaurantCategory restaurantCategory : restaurantCategoryList) {
             // Get Restaurant UUID from Dao
             Restaurant restaurant = restaurantBusinessService.getRestaurantUUIDById(restaurantCategory.getRestaurant_id());
-            //getRestaurantsByRestaurantId(restaurant.getUuid());
             restaurants.add(restaurant);
         }
 
@@ -159,8 +163,6 @@ public class RestaurantController {
 
             String category_names = categoryService.getCategory(restaurant.getId());
             restaurantList.setCategories(category_names);
-            //List<Category> categories = restaurant.getCategory();
-            //restaurantList.setCategories(categories.toString());
             restaurantListResponse.addRestaurantsItem(restaurantList);
         }
         return new ResponseEntity<>(restaurantListResponse, HttpStatus.OK);
@@ -168,9 +170,10 @@ public class RestaurantController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantDetailsResponse> getRestaurantsByRestaurantId(@PathVariable("restaurant_id") String restaurant_id) throws RestaurantNotFoundException {
-
+        if (null == restaurant_id) {
+            throw new RestaurantNotFoundException("RNF-002", "Restaurant id field should not be empty");
+        }
         RestaurantDetailsResponse restaurantDetailsResponse = new RestaurantDetailsResponse();
-        //RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
         Restaurant restaurant = restaurantBusinessService.getRestaurantById(restaurant_id);
 
         restaurantDetailsResponse.setId(UUID.fromString(restaurant_id));
@@ -196,14 +199,35 @@ public class RestaurantController {
         responseAddressState.setStateName(state.getState_name());
         restaurantDetailsResponseAddress.setState(responseAddressState);
         restaurantDetailsResponse.setAddress(restaurantDetailsResponseAddress);
-        //ToDo : Set CategoriesList in alphabetical order
-        //restaurantDetailsResponse.setCategories();
 
-        String category_names = categoryService.getCategory(restaurant.getId());
-        //restaurantDetailsResponse.setCategories(category_names);
+        List<Category> categories = categoryService.getAllCategoryObject(restaurant.getId());
+
+        //CategoryDetailsResponse categoryDetailsResponse = new CategoryDetailsResponse();
+        List<CategoryList> categoryList = new ArrayList<>();
+        for (Category category : categories){
+            // Iterate over each category and get the item id from category item
+            CategoryList list = new CategoryList();
+            list.setId(UUID.fromString(category.getUuid()));
+            list.setCategoryName(category.getCategory_name());
+
+            List<CategoryItem> categoryItems = itemService.getItemsbyCategoryId(category.getId());
+            List<ItemList> itemLists = new ArrayList<>();
+            for(CategoryItem categoryItem: categoryItems){
+                Item item = itemService.getItemsbyItemsId(categoryItem.getItem_id());
+                ItemList itemList = new ItemList();
+                itemList.setId(UUID.fromString(item.getUuid()));
+                itemList.setItemName(item.getItem_name());
+                itemList.setPrice(item.getPrice());
+                //TODO : Add Veg for 0 and 1 for Non Veg for ItemTyep
+                //itemList.setItemType(ItemList.ItemTypeEnum.valueOf(item.getType()));
+                itemLists.add(itemList);
+            }
+            list.setItemList(itemLists);
+            categoryList.add(list);
+        }
+        restaurantDetailsResponse.setCategories(categoryList);
         //List<Category> categories = restaurant.getCategory();
         //restaurantList.setCategories(categories.toString());
-
         return new ResponseEntity<>(restaurantDetailsResponse, HttpStatus.OK);
     }
 }
