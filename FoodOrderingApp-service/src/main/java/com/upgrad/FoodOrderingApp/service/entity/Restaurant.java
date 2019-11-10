@@ -16,6 +16,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "restaurant", schema = "public")
+@NamedQueries({
+        @NamedQuery(name = "restaurantByName", query = "select u from Restaurant u where u.restaurant_name = :restaurant_name"),
+})
 public class Restaurant implements Serializable {
 
     @Id
