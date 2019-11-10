@@ -11,21 +11,23 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "State", schema = "public")
-public class State implements Serializable {
+@Table(name = "restaurant_category", schema = "public")
+@NamedQueries({
+        @NamedQuery(name = "restaurantCategoriesIds", query = "select ct from RestaurantCategory ct where ct.restaurant_id =:restaurant_id")
+})
+public class RestaurantCategory implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "uuid")
-    @Size(max = 200)
-    private String uuid;
-
-    @Column(name = "STATE_NAME")
+    @Column(name = "restaurant_id")
     @NotNull
-    @Size(max = 30)
-    private String state_name;
+    private Integer restaurant_id;
+
+    @Column(name = "category_id")
+    @NotNull
+    private String category_id;
 
     public long getId() {
         return id;
@@ -35,20 +37,20 @@ public class State implements Serializable {
         this.id = id;
     }
 
-    public String getUuid() {
-        return uuid;
+    public Integer getRestaurant_id() {
+        return restaurant_id;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setRestaurant_id(Integer restaurant_id) {
+        this.restaurant_id = restaurant_id;
     }
 
-    public String getState_name() {
-        return state_name;
+    public String getCategory_id() {
+        return category_id;
     }
 
-    public void setState_name(String state_name) {
-        this.state_name = state_name;
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 
     @Override

@@ -9,17 +9,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "Category", schema = "public")
+@Table(name = "category", schema = "public")
 @NamedQueries({
-        @NamedQuery(name = "restaurantCategories", query = "select ct from Category ct where ct.uuid =:uuid order by ct.category_name")
+        @NamedQuery(name = "getCategoryName", query = "select c from Category c where c.id =:id order by c.category_name")
 })
 public class Category implements Serializable {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -27,10 +28,13 @@ public class Category implements Serializable {
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "CATEGORY_NAME")
+    @Column(name = "category_name")
     @NotNull
     @Size(max = 30)
     private String category_name;
+
+//    @ManyToMany(mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<Restaurant> restaurants = new ArrayList();
 
     public long getId() {
         return id;

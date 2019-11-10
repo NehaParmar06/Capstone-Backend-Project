@@ -20,7 +20,7 @@ public class CategoryService {
     private CategoryDao categoryDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Category> getCategory(String uuid) {
-        return categoryDao.getCategory(uuid);
+    public String getCategory(int restaurant_id) {
+        return categoryDao.getCategory(restaurant_id);
     }
 }

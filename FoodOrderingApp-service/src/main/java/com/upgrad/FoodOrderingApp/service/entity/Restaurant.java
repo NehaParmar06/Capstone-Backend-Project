@@ -10,46 +10,51 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Restaurant", schema = "public")
+@Table(name = "restaurant", schema = "public")
 public class Restaurant implements Serializable {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "UUID")
+    @Column(name = "uuid")
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "RESTAURANT_NAME")
+    @Column(name = "restaurant_name")
     @NotNull
     @Size(max = 50)
     private String restaurant_name;
 
-    @Column(name = "PHOTO_URL")
+    @Column(name = "photo_url")
     @NotNull
     @Size(max = 255)
     private String photo_url;
 
-    @Column(name = "CUSTOMER_RATING")
+    @Column(name = "customer_rating")
     @NotNull
     private BigDecimal customer_rating;
 
-    @Column(name = "AVERAGE_PRICE_FOR_TWO")
+    @Column(name = "average_price_for_two")
     @NotNull
     private Integer average_price_for_two;
 
-    @Column(name = "NUMBER_OF_CUSTOMERS_RATED")
+    @Column(name = "number_of_customers_rated")
     @NotNull
     private Integer number_of_customers_rated;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Category> category = new ArrayList();
 
     public long getId() {
         return id;
@@ -114,6 +119,14 @@ public class Restaurant implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+//    public List<Category> getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(List<Category> category) {
+//        this.category = category;
+//    }
 
     @Override
     public boolean equals(Object obj) {
