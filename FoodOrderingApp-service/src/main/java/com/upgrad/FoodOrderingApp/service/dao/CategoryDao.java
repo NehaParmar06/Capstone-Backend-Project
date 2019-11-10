@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public class RestaurantDao {
+public class CategoryDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Restaurant> getAllRestaurants() {
+    public List<Category> getCategory(String uuid) {
         try {
-            return entityManager.createQuery("SELECT p from Restaurant p order by p.customer_rating desc", Restaurant.class).getResultList();
+            return entityManager.createNamedQuery("restaurantCategories", Category.class).setParameter("uuid", uuid).getResultList();
         } catch (NoResultException nre) {
             return null;
         }

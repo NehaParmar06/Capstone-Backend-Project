@@ -6,52 +6,51 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
-import javax.swing.plaf.nimbus.State;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
-@Table(name = "Address", schema = "public")
-public class AddressEntity implements Serializable {
-
+@Table(name = "State", schema = "public")
+public class State implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "UUID")
+    @Column(name = "uuid")
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "FLAT_BUIL_NUMBER")
+    @Column(name = "STATE_NAME")
     @NotNull
-    @Size(max = 255)
-    private String flat_buil_number;
+    @Size(max = 30)
+    private String state_name;
 
-    @Column(name = "LOCALITY")
-    @NotNull
-    @Size(max = 255)
-    private String locality;
+    public long getId() {
+        return id;
+    }
 
-    @Column(name = "CITY")
-    @NotNull
-    private String city;
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    @Column(name = "PINCODE")
-    @NotNull
-    private String pincode;
+    public String getUuid() {
+        return uuid;
+    }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "state_id")
-    @NotNull
-    private StateEntity state;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
-    @Column(name = "ACTIVE")
-    @NotNull
-    private Integer active;
+    public String getState_name() {
+        return state_name;
+    }
 
+    public void setState_name(String state_name) {
+        this.state_name = state_name;
+    }
 
     @Override
     public boolean equals(Object obj) {

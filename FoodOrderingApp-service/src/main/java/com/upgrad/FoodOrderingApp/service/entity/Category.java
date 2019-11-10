@@ -9,24 +9,28 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
-@Table(name = "State", schema = "public")
-public class StateEntity implements Serializable {
+@Table(name = "Category", schema = "public")
+@NamedQueries({
+        @NamedQuery(name = "restaurantCategories", query = "select ct from Category ct where ct.uuid =:uuid order by ct.category_name")
+})
+public class Category implements Serializable {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "UUID")
+    @Column(name = "uuid")
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "STATE_NAME")
+    @Column(name = "CATEGORY_NAME")
     @NotNull
     @Size(max = 30)
-    private String state_name;
+    private String category_name;
 
     public long getId() {
         return id;
@@ -44,12 +48,12 @@ public class StateEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getState_name() {
-        return state_name;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setState_name(String state_name) {
-        this.state_name = state_name;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
     @Override

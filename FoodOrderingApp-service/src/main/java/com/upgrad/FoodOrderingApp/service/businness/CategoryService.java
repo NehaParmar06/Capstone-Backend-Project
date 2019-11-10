@@ -1,6 +1,8 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
+import com.upgrad.FoodOrderingApp.service.dao.CategoryDao;
 import com.upgrad.FoodOrderingApp.service.dao.RestaurantDao;
+import com.upgrad.FoodOrderingApp.service.entity.Category;
 import com.upgrad.FoodOrderingApp.service.entity.Restaurant;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class RestaurantBusinessService {
+public class CategoryService {
 
     @Autowired
-    private RestaurantDao restaurantDao;
+    private CategoryDao categoryDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Restaurant> getAllRestaurants() throws SignUpRestrictedException {
-        return restaurantDao.getAllRestaurants();
+    public List<Category> getCategory(String uuid) {
+        return categoryDao.getCategory(uuid);
     }
 }

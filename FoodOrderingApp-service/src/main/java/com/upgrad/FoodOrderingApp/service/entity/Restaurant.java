@@ -10,12 +10,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Restaurant", schema = "public")
-public class RestaurantEntity implements Serializable {
+public class Restaurant implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -48,15 +47,9 @@ public class RestaurantEntity implements Serializable {
     @NotNull
     private Integer number_of_customers_rated;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "address_id")
-//    @NotNull
-//    private AddressEntity address;
-
-//    @Column(name = "ADDRESS_ID")
-//    @NotNull
-//    private Integer address_id;
-
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     public long getId() {
         return id;
@@ -112,6 +105,14 @@ public class RestaurantEntity implements Serializable {
 
     public void setNumber_of_customers_rated(Integer number_of_customers_rated) {
         this.number_of_customers_rated = number_of_customers_rated;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
