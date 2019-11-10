@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.CategoryService;
 import com.upgrad.FoodOrderingApp.service.businness.RestaurantBusinessService;
-import com.upgrad.FoodOrderingApp.service.entity.Address;
-import com.upgrad.FoodOrderingApp.service.entity.Category;
-import com.upgrad.FoodOrderingApp.service.entity.Restaurant;
-import com.upgrad.FoodOrderingApp.service.entity.State;
+import com.upgrad.FoodOrderingApp.service.entity.*;
+import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.RestaurantNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,8 +62,8 @@ public class RestaurantController {
             restaurantDetailsResponseAddress.setState(responseAddressState);
             restaurantList.setAddress(restaurantDetailsResponseAddress);
 
-            //String category_names = categoryService.getCategory(restaurant.getId());
-            //restaurantList.setCategories(category_names);
+            String category_names = categoryService.getCategory(restaurant.getId());
+            restaurantList.setCategories(category_names);
             //List<Category> categories = restaurant.getCategory();
             //restaurantList.setCategories(categories.toString());
             restaurantListResponse.addRestaurantsItem(restaurantList);
@@ -103,8 +102,8 @@ public class RestaurantController {
             restaurantDetailsResponseAddress.setState(responseAddressState);
             restaurantList.setAddress(restaurantDetailsResponseAddress);
 
-            //String category_names = categoryService.getCategory(restaurant.getId());
-            //restaurantList.setCategories(category_names);
+            String category_names = categoryService.getCategory(restaurant.getId());
+            restaurantList.setCategories(category_names);
             //List<Category> categories = restaurant.getCategory();
             //restaurantList.setCategories(categories.toString());
             restaurantListResponse.addRestaurantsItem(restaurantList);
@@ -112,10 +111,25 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantListResponse, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/restaurant/name/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable("category_id") String category_id) throws RestaurantNotFoundException {
+    @RequestMapping(method = RequestMethod.GET, path = "/restaurant/category/{category_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<RestaurantListResponse> getRestaurantsByCategoryId(@PathVariable("category_id") String category_id) throws CategoryNotFoundException, RestaurantNotFoundException {
         RestaurantListResponse restaurantListResponse = new RestaurantListResponse();
-        List<Restaurant> restaurants = restaurantBusinessService.getRestaurantsByName(category_id);
+        if (null == category_id) {
+            throw new CategoryNotFoundException("CNF-001", "Category id field should not be empty");
+        }
+
+        List<RestaurantCategory> restaurantCategoryList = categoryService.getRestaurantByCategoryId(category_id);
+        if ( null == restaurantCategoryList || restaurantCategoryList.size() == 0 ){
+            return null;
+        }
+        List<Restaurant> restaurants = new ArrayList<>();
+        for(RestaurantCategory restaurantCategory: restaurantCategoryList){
+            // Get Restaurant UUID from Dao
+            Restaurant restaurant = restaurantBusinessService.getRestaurantUUIDById(restaurantCategory.getRestaurant_id());
+            //getRestaurantsByRestaurantId(restaurant.getUuid());
+            restaurants.add(restaurant);
+        }
+
         for (Restaurant restaurant : restaurants) {
             RestaurantList restaurantList = new RestaurantList();
 
@@ -143,8 +157,8 @@ public class RestaurantController {
             restaurantDetailsResponseAddress.setState(responseAddressState);
             restaurantList.setAddress(restaurantDetailsResponseAddress);
 
-            //String category_names = categoryService.getCategory(restaurant.getId());
-            //restaurantList.setCategories(category_names);
+            String category_names = categoryService.getCategory(restaurant.getId());
+            restaurantList.setCategories(category_names);
             //List<Category> categories = restaurant.getCategory();
             //restaurantList.setCategories(categories.toString());
             restaurantListResponse.addRestaurantsItem(restaurantList);
@@ -185,8 +199,8 @@ public class RestaurantController {
         //ToDo : Set CategoriesList in alphabetical order
         //restaurantDetailsResponse.setCategories();
 
-        //String category_names = categoryService.getCategory(restaurant.getId());
-        //restaurantList.setCategories(category_names);
+        String category_names = categoryService.getCategory(restaurant.getId());
+        //restaurantDetailsResponse.setCategories(category_names);
         //List<Category> categories = restaurant.getCategory();
         //restaurantList.setCategories(categories.toString());
 

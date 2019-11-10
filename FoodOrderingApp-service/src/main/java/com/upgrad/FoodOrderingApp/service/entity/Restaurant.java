@@ -19,13 +19,14 @@ import java.util.UUID;
 @NamedQueries({
         @NamedQuery(name = "restaurantByName", query = "select u from Restaurant u where lower(u.restaurant_name) like lower(concat('%', :restaurant_name,'%'))"),
         @NamedQuery(name = "restaurantById", query = "select u from Restaurant u where u.uuid = :uuid"),
+        @NamedQuery(name = "restaurantIdByUUId", query = "select u from Restaurant u where u.id = :id"),
 })
 public class Restaurant implements Serializable {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "uuid")
     @Size(max = 200)
@@ -60,11 +61,11 @@ public class Restaurant implements Serializable {
 //    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    private List<Category> category = new ArrayList();
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

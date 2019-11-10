@@ -13,27 +13,28 @@ import java.io.Serializable;
 @Entity
 @Table(name = "restaurant_category", schema = "public")
 @NamedQueries({
-        @NamedQuery(name = "restaurantCategoriesIds", query = "select ct from RestaurantCategory ct where ct.restaurant_id =:restaurant_id")
+        @NamedQuery(name = "getByRestaurantId", query = "select ct from RestaurantCategory ct where ct.restaurant_id =:restaurant_id"),
+        @NamedQuery(name = "getByCategoryId", query = "select rc from RestaurantCategory rc where rc.category_id =:category_id"),
 })
 public class RestaurantCategory implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "restaurant_id")
     @NotNull
-    private Integer restaurant_id;
+    private int restaurant_id;
 
     @Column(name = "category_id")
     @NotNull
-    private String category_id;
+    private int category_id;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,11 +46,11 @@ public class RestaurantCategory implements Serializable {
         this.restaurant_id = restaurant_id;
     }
 
-    public String getCategory_id() {
+    public Integer getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(String category_id) {
+    public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
 

@@ -14,11 +14,10 @@ import java.util.UUID;
 @Entity
 @Table(name = "address", schema = "public")
 public class Address implements Serializable {
-
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "UUID")
     @Size(max = 200)
@@ -53,11 +52,11 @@ public class Address implements Serializable {
     @OneToOne(mappedBy = "address")
     private Restaurant restaurant;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

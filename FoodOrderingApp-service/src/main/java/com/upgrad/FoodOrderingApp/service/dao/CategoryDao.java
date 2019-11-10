@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.service.dao;
 
 import com.upgrad.FoodOrderingApp.service.entity.Category;
 import com.upgrad.FoodOrderingApp.service.entity.RestaurantCategory;
+import com.upgrad.FoodOrderingApp.service.exception.CategoryNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ public class CategoryDao {
     // Function accepts the restaurant id and gets the category id's
     public String getCategory(int id) {
         try {
-            List<RestaurantCategory> restaurantCategories = entityManager.createNamedQuery("restaurantCategoriesIds", RestaurantCategory.class).setParameter("id", id).getResultList();
+            List<RestaurantCategory> restaurantCategories = entityManager.createNamedQuery("getByRestaurantId", RestaurantCategory.class).setParameter("restaurant_id", id).getResultList();
             List<String> category_name = new ArrayList<>();
             for (RestaurantCategory restaurantCategory : restaurantCategories) {
                 // get category names from the id's fetched
@@ -34,6 +35,22 @@ public class CategoryDao {
             String listString = String.join(", ", category_name);
 
             return listString;
+
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    // Function accepts the category uuid and gets the category id's
+    public List<RestaurantCategory> getCategoryById(String uuid) throws CategoryNotFoundException {
+        try {
+            // Get Id from UUOID
+            Category category = entityManager.createNamedQuery("getCategoryByUUId", Category.class).setParameter("uuid", uuid).getSingleResult();
+            if (null == category) {
+                throw new CategoryNotFoundException("CNF-002", "No category by this id");
+            }
+
+            return entityManager.createNamedQuery("getByCategoryId", RestaurantCategory.class).setParameter("category_id", category.getId()).getResultList();
 
         } catch (NoResultException nre) {
             return null;

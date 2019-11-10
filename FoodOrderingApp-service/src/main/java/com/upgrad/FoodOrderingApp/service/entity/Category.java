@@ -15,14 +15,14 @@ import java.util.List;
 @Entity
 @Table(name = "category", schema = "public")
 @NamedQueries({
-        @NamedQuery(name = "getCategoryName", query = "select c from Category c where c.id =:id order by c.category_name")
+        @NamedQuery(name = "getCategoryName", query = "select c from Category c where c.id =:id order by c.category_name"),
+        @NamedQuery(name = "getCategoryByUUId", query = "select c from Category c where c.uuid =:uuid order by c.category_name"),
 })
 public class Category implements Serializable {
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "uuid")
     @Size(max = 200)
@@ -36,11 +36,11 @@ public class Category implements Serializable {
 //    @ManyToMany(mappedBy = "category", fetch = FetchType.LAZY)
 //    private List<Restaurant> restaurants = new ArrayList();
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
