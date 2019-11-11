@@ -24,9 +24,9 @@ public class ItemDao {
         }
     }
 
-    public Item getItemsByItemId(int category_id) {
+    public Item getItemsByItemId(int item_id) {
         try {
-            return entityManager.createNamedQuery("getItemsByItemId", Item.class).setParameter("id", category_id).getSingleResult();
+            return entityManager.createNamedQuery("getItemsByItemId", Item.class).setParameter("id", item_id).getSingleResult();
 
         } catch (NoResultException nre) {
             return null;
