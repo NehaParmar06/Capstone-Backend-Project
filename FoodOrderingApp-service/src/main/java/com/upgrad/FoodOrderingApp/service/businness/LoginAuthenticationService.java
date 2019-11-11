@@ -45,6 +45,7 @@ public class LoginAuthenticationService {
 
             customerAuthTokenEntity.setLogin_at(now);
             customerAuthTokenEntity.setExpires_at(expiresAt);
+            customerAuthTokenEntity.setCustomer(customerEntity);
             // Setting log out value to null to depict that the user is not logged out.
             customerAuthTokenEntity.setLogout_at(null);
             customerAuthTokenDao.createAuthToken(customerAuthTokenEntity);

@@ -23,6 +23,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/")
 public class CustomerController {
 
     @Autowired
