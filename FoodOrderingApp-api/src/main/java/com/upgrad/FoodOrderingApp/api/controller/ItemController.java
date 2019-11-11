@@ -35,6 +35,11 @@ public class ItemController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/item/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RestaurantDetailsResponse> getPopularItems(@PathVariable("restaurant_id") String restaurant_id) throws RestaurantNotFoundException {
+        if ( null == restaurant_id){
+            throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
+        }
+        Restaurant restaurant = restaurantBusinessService.getRestaurantById(restaurant_id);
+
 
         return new ResponseEntity<>(null, HttpStatus.OK);
     }

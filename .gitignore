@@ -1,3 +1,5 @@
 workspace.xml
 application.yaml
-localhost.properties
+config/localhost.properties
+.idea/workspace.xml
+target
