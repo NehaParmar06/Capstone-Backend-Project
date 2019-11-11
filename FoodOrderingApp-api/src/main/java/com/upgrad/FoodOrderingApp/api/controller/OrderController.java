@@ -14,6 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/")
 public class OrderController {
 
@@ -21,8 +22,8 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping(method = GET, path = "/order/coupon/{coupon_name}", produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CouponDetailsResponse> getCouponByName(@RequestHeader("authorization") String accessToken, @PathVariable("coupon_name") final String couponName) throws AuthorizationFailedException,CouponNotFoundException {
-        CouponEntity couponEntity = orderService.getCouponDetailsByName(accessToken,couponName);
+    public ResponseEntity<CouponDetailsResponse> getCouponByName(@RequestHeader("authorization") String accessToken, @PathVariable("coupon_name") final String couponName) throws AuthorizationFailedException, CouponNotFoundException {
+        CouponEntity couponEntity = orderService.getCouponDetailsByName(accessToken, couponName);
         final CouponDetailsResponse couponDetailsResponse = new CouponDetailsResponse().id(couponEntity.getUuid()).couponName(couponName).percent(couponEntity.getPercent());
         return new ResponseEntity<CouponDetailsResponse>(couponDetailsResponse, HttpStatus.OK);
     }

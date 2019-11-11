@@ -20,14 +20,15 @@ public class OrderService {
     private CouponDao couponDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public CouponEntity getCouponDetailsByName(final String authorization,final String couponName) throws AuthorizationFailedException,CouponNotFoundException {
-        CustomerEntity customerEntity=customerService.getCustomer(authorization);
+    public CouponEntity getCouponDetailsByName(final String authorization, final String couponName) throws AuthorizationFailedException, CouponNotFoundException {
+        CustomerEntity customerEntity = customerService.getCustomer(authorization);
         if (couponName.isEmpty())
             throw new CouponNotFoundException("CPF-002", "Coupon name field should not be empty");
-        CouponEntity couponEntity=couponDao.getCouponByName(couponName);
-        if(couponEntity==null)
+        CouponEntity couponEntity = couponDao.getCouponByName(couponName);
+        if (couponEntity == null)
             throw new CouponNotFoundException("CPF-001", "No coupon by this name");
         else
             return couponEntity;
     }
+
 }
