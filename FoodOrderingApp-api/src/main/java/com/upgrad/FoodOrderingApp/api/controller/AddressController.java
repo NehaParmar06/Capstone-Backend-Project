@@ -70,12 +70,12 @@ public class AddressController {
     }
 
     //toDo
- //   @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
- //   public ResponseEntity<DeleteAddressResponse> deleteSavedAddress(@RequestHeader("authorization") final String authorization, @PathVariable("address_id") final String address_id) throws AuthorizationFailedException, AddressNotFoundException {
-//        AddressEntity addressEntity = addressService.deleteSavedAddress(authorization, address_id);
-//        final DeleteAddressResponse deleteAddressResponse = new DeleteAddressResponse().id(addressEntity.getUuid()).status("ADDRESS DELETED SUCCESSFULLY");
-//        return new ResponseEntity<DeleteAddressResponse>(deleteAddressResponse, HttpStatus.OK);
-//    }
+    @RequestMapping(method = RequestMethod.DELETE, path = "/address/{address_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<DeleteAddressResponse> deleteSavedAddress(@RequestHeader("authorization") final String authorization, @PathVariable("address_id") final UUID address_id) throws AuthorizationFailedException, AddressNotFoundException {
+        AddressEntity addressEntity = addressService.deleteSavedAddress(authorization, address_id);
+        final DeleteAddressResponse deleteAddressResponse = new DeleteAddressResponse().id(address_id).status("ADDRESS DELETED SUCCESSFULLY");
+        return new ResponseEntity<DeleteAddressResponse>(deleteAddressResponse, HttpStatus.OK);
+    }
 
 
     //toDo
