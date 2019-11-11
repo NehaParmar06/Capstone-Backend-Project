@@ -83,71 +83,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/businness/SignupBusinessService.java">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/resources/application.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java">
+        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="34" column="61" lean-forward="true" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/dao/CustomerDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerAuthEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#71#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FoodOrderingApp-service/src/main/java/com/upgrad/FoodOrderingApp/service/entity/CustomerEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#0#53#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="1054">
+              <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -208,50 +165,50 @@
     <option name="width" value="1390" />
     <option name="height" value="790" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -259,8 +216,8 @@
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -269,121 +226,19 @@
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="FoodOrderingApp-Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Capstone-Backend-Project" type="462c0819:PsiDirectoryNode" />
               <item name="FoodOrderingApp-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="businness" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodOrderingApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodOrderingAppBackend" type="462c0819:PsiDirectoryNode" />
-              <item name="FoodOrderingApp-service" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -432,11 +287,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.FoodOrderingAppApiApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -461,10 +311,9 @@
     <option name="totallyTimeSpent" value="32270000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9160714" visible="true" weight="0.3147651" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9160714" visible="true" weight="0.24713467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -502,6 +351,22 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/test/java/com/upgrad/FoodOrderingApp/api/controller/AddressControllerTest.java">
@@ -582,11 +447,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/FoodOrderingAppApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -601,8 +463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/src/main/resources/application.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        <state relative-caret-position="85">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -653,8 +515,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoodOrderingApp-api/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="1054">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
         </state>
       </provider>
     </entry>
