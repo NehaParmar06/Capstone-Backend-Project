@@ -30,7 +30,7 @@ public class StateEntity implements Serializable {
 
     @Column(name = "STATE_NAME")
     @Size(max = 30)
-    private int state_name;
+    private String state_name;
 
     public long getId() {
         return id;
@@ -48,11 +48,11 @@ public class StateEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public int getState_name() {
+    public String getState_name() {
         return state_name;
     }
 
-    public void setState_name(int state_name) {
+    public void setState_name(String state_name) {
         this.state_name = state_name;
     }
 

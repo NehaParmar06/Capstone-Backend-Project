@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AddressService {
@@ -59,7 +60,7 @@ public class AddressService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public AddressEntity deleteSavedAddress(final String authorization, final String addressId) throws AuthorizationFailedException, AddressNotFoundException {
+    public AddressEntity deleteSavedAddress(final String authorization, final UUID addressId) throws AuthorizationFailedException, AddressNotFoundException {
         CustomerEntity customerEntity = customerService.getCustomer(authorization);
         AddressEntity addressEntity = addressDao.getAddress(authorization);
 //        if(customerEntity.getUuid() == addressEntity.getCust){
