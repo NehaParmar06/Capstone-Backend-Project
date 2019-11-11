@@ -37,7 +37,7 @@ public class ItemController {
     OrderService orderService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/item/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RestaurantDetailsResponse> getPopularItems(@PathVariable("restaurant_id") String restaurant_id) throws RestaurantNotFoundException {
+    public ResponseEntity<ItemListResponse> getPopularItems(@PathVariable("restaurant_id") String restaurant_id) throws RestaurantNotFoundException {
         if ( null == restaurant_id){
             throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
         }
@@ -64,17 +64,29 @@ public class ItemController {
                         .compareTo(((Map.Entry<Integer, Integer>) o1).getValue());
             }
         });
+        ItemListResponse itemListResponse = new ItemListResponse();
+        //itemListResponse.add();
+
+
         for (Object e : a) {
             for ( int i = 0 ; i < 4 ; i++){
                 // Get Top 5 items:
                 Item item = itemService.getItemsbyItemsId(((Map.Entry<Integer, Integer>) e).getKey());
                 //System.out.println(((Map.Entry<String, Integer>) e).getKey() + " : " + ((Map.Entry<String, Integer>) e).getValue());
-
+                ItemList itemList = new ItemList();
+                itemList.setId(UUID.fromString(item.getUuid()));
+                itemList.setPrice(item.getPrice());
+                itemList.setItemName(item.getItem_name());
+                if (Integer.parseInt(item.getType()) == 0) {
+                    itemList.setItemType(ItemList.ItemTypeEnum.VEG);
+                }
+                if (Integer.parseInt(item.getType()) == 1) {
+                    itemList.setItemType(ItemList.ItemTypeEnum.NON_VEG);
+                }
+                itemListResponse.add(itemList);
             }
-
         }
-
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(itemListResponse, HttpStatus.OK);
     }
 }
 
