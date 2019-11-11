@@ -39,6 +39,7 @@ public class ItemController {
             throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
         }
         Restaurant restaurant = restaurantBusinessService.getRestaurantById(restaurant_id);
+        
 
 
         return new ResponseEntity<>(null, HttpStatus.OK);
